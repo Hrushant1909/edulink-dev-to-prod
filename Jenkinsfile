@@ -1,10 +1,7 @@
-pipeline{
+pipeline {
     agent any
 
-
-    stages{
-
-
+    stages {
         stage('Backend Build') {
             steps {
                 dir('EduLink/EdLink') {
@@ -12,12 +9,14 @@ pipeline{
                 }
             }
         }
+    }
 
-        post{
-        success{
+    post {
+        success {
             echo 'Pipeline completed successfully!'
         }
-        failure{
+
+        failure {
             echo 'Pipeline failed!'
         }
     }
