@@ -5,20 +5,15 @@ pipeline{
     stages{
 
 
-        stage('Backend Build'){
-            steps{
-                dir('EduLink/EdLink'){
+        stage('Backend Build') {
+            steps {
+                dir('EduLink/EdLink') {
                     sh './mvnw clean package -DskipTests'
                 }
             }
         }
 
-
-
-
-    }
-
-    post{
+        post{
         success{
             echo 'Pipeline completed successfully!'
         }
