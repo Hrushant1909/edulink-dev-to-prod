@@ -2,11 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Backend Build') {
+        stage('Check Project Structure') {
             steps {
-                dir('EduLink/EdLink') {
-                    sh './mvnw clean package -DskipTests'
-                }
+                sh '''
+                    echo "Current directory:"
+                    pwd
+
+                    echo "Repository structure:"
+                    find . -maxdepth 4 -type f | sort
+                '''
             }
         }
     }
