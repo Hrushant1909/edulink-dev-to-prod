@@ -1,10 +1,20 @@
 pipeline{
     agent any
+
+
     stages{
-        stage('Greetings'){
+
+
+        stage('Backend Build'){
             steps{
-                echo 'Hello Hrushant!!'
+                dir('EdLink'){
+                    sh './mvnw clean package -DskipTests'
+                }
             }
         }
+
+
+        
+
     }
 }
