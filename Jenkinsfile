@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Backend Build') {
             steps {
-                dir('EduLink Backend/EdLink') {
+                dir('Edulink Backend/EdLink') {
                     sh './mvnw clean package -DskipTests'
                 }
             }
