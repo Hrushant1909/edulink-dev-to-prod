@@ -29,6 +29,15 @@ pipeline {
                 ''', fingerprint: true
             }
         }
+
+
+        stage('Deploy Backend') {
+            steps {
+                dir('Edulink Backend/EdLink') {
+                    sh 'cp target/*.jar /opt/edulink/app.jar'
+                }
+            }
+        }
     }
 
 
