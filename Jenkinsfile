@@ -2,11 +2,18 @@ pipeline {
     agent any
 
     stages {
+
+
         stage('Backend Build') {
             steps {
                 dir('Edulink Backend/EdLink') {
                     sh './mvnw clean package -DskipTests'
                 }
+            }
+        }
+        stage('Archive backend artifacts'){
+            steps{
+                archiveArtifacts artifacts: 'Edulink Backend/EdLink/target/*.jar', fingerprint: true
             }
         }
 
