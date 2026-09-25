@@ -11,19 +11,22 @@ pipeline {
                 }
             }
         }
-        stage('Archive backend artifacts'){
-            steps{
-                archiveArtifacts artifacts: 'Edulink Backend/EdLink/target/*.jar', fingerprint: true
-            }
-        }
-
-
+        
         stage('Frontend Build'){
             steps{
                 dir('edulink-frontend'){
                     sh 'npm install'
                     sh 'npm run build'
                 }
+            }
+        }
+
+        stage('Archive backend artifacts'){
+            steps{
+                archiveArtifacts artifacts: '''
+                    Edulink Backend/EdLink/target/*.jar,
+                    edulink-frontend/dist/**
+                ''', fingerprint: true
             }
         }
     }
