@@ -42,7 +42,9 @@ pipeline {
         stage('Start Backend') {
             steps {
                 sh '''
-                    nohup java -jar /opt/edulink/app.jar > /opt/edulink/app.log 2>&1 &
+                    JENKINS_NODE_COOKIE=dontKillMe
+                    nohup java -jar /opt/edulink/app.jar \
+                        > /opt/edulink/app.log 2>&1 &
                 '''
             }
         }
