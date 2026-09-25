@@ -9,7 +9,18 @@ pipeline {
                 }
             }
         }
+
+
+        stage('Frontend Build'){
+            steps{
+                dir('edulink-frontend'){
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
     }
+
 
     post {
         success {
